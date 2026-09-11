@@ -1,100 +1,203 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
-    <!-- Primary Navigation Menu -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-slate-800 border-b border-gray-200 dark:border-slate-700">
+
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16">
-            <div class="flex">
-                <!-- Logo -->
-                <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
-                    </a>
-                </div>
 
-                <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
-                </div>
+        <div class="flex justify-between items-center h-16">
+
+            <!-- Portail ISO 27001 -->
+            <div class="flex items-center h-16">
+                <a href="{{ route('dashboard') }}"
+                   class="inline-flex items-center h-16 font-semibold text-gray-800 dark:text-slate-100 text-base">
+                    🏠 Portail ISO 27001
+                </a>
             </div>
 
-            <!-- Settings Dropdown -->
-            <div class="hidden sm:flex sm:items-center sm:ms-6">
-                <x-dropdown align="right" width="48">
-                    <x-slot name="trigger">
-                        <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
-                            <div>{{ Auth::user()->name }}</div>
+            <!-- Navigation -->
+            <div class="flex items-center gap-6 h-16">
 
-                            <div class="ms-1">
-                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                </svg>
+                <!-- Tableau de bord -->
+                <a href="{{ route('dashboard') }}"
+                   class="inline-flex items-center h-16 text-gray-700 dark:text-slate-100 text-base hover:text-blue-600 dark:hover:text-blue-300">
+                    Tableau de bord
+                </a>
+
+                <!-- Modules -->
+                <div x-data="{ open: false }" class="relative h-16">
+
+                    <button
+                        type="button"
+                        @click="open = !open"
+                        class="inline-flex items-center h-16 text-gray-700 dark:text-slate-100 text-base hover:text-blue-600 dark:hover:text-blue-300"
+                    >
+                        Modules ▾
+                    </button>
+
+                    <div
+                        x-show="open"
+                        @click.outside="open = false"
+                        class="absolute right-0 mt-2 w-56 bg-white dark:bg-slate-700 border border-gray-200 dark:border-slate-600 rounded-lg shadow-lg z-50"
+                    >
+
+                        @can('gerer_utilisateurs')
+                            <a href="{{ route('users.index') }}"
+                               class="block px-4 py-2 text-gray-700 dark:text-slate-100 hover:bg-gray-100 dark:hover:bg-slate-600">
+                                Gestion utilisateurs
+                            </a>
+                        @endcan
+
+                        @can('gerer_evaluations')
+                            <a href="{{ route('evaluations.index') }}"
+                               class="block px-4 py-2 text-gray-700 dark:text-slate-100 hover:bg-gray-100 dark:hover:bg-slate-600">
+                                Évaluations
+                            </a>
+                        @endcan
+
+                        @can('remplir_questionnaire')
+                            <a href="{{ route('questionnaire.index') }}"
+                               class="block px-4 py-2 text-gray-700 dark:text-slate-100 hover:bg-gray-100 dark:hover:bg-slate-600">
+                                Questionnaire ISO
+                            </a>
+                        @endcan
+
+                        @can('gerer_risques')
+                            <a href="{{ route('risks.index') }}"
+                               class="block px-4 py-2 text-gray-700 dark:text-slate-100 hover:bg-gray-100 dark:hover:bg-slate-600">
+                                Analyse des risques
+                            </a>
+                        @endcan
+
+                        @can('gerer_traitements')
+                            <a href="{{ route('treatments.index') }}"
+                               class="block px-4 py-2 text-gray-700 dark:text-slate-100 hover:bg-gray-100 dark:hover:bg-slate-600">
+                                Plan de traitement
+                            </a>
+                        @endcan
+
+                        @can('voir_audit')
+                            <a href="{{ route('audit.index') }}"
+                               class="block px-4 py-2 text-gray-700 dark:text-slate-100 hover:bg-gray-100 dark:hover:bg-slate-600">
+                                Journal
+                            </a>
+                        @endcan
+
+                        <!-- Rapport -->
+                        <div x-data="{ reportOpen: false }">
+
+                            <button
+                                type="button"
+                                @click="reportOpen = !reportOpen"
+                                class="flex items-center justify-between w-full px-4 py-2 text-gray-700 dark:text-slate-100 hover:bg-gray-100 dark:hover:bg-slate-600"
+                            >
+                                <span>Rapport</span>
+                                <span>▸</span>
+                            </button>
+
+                            <div
+                                x-show="reportOpen"
+                                class="bg-gray-50 dark:bg-slate-800 border-t border-gray-100 dark:border-slate-600"
+                            >
+
+                                <a href="{{ route('report.pdf') }}"
+                                   class="block px-6 py-2 text-gray-700 dark:text-slate-100 hover:bg-gray-100 dark:hover:bg-slate-700">
+                                    Générer le PDF
+                                </a>
+
+                                <a href="{{ route('report.edit') }}"
+                                   class="block px-6 py-2 text-gray-700 dark:text-slate-100 hover:bg-gray-100 dark:hover:bg-slate-700">
+                                    Modifier le rapport
+                                </a>
+
                             </div>
-                        </button>
-                    </x-slot>
 
-                    <x-slot name="content">
-                        <x-dropdown-link :href="route('profile.edit')">
-                            {{ __('Profile') }}
-                        </x-dropdown-link>
+                        </div>
 
-                        <!-- Authentication -->
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
+                    </div>
 
-                            <x-dropdown-link :href="route('logout')"
-                                    onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                                {{ __('Log Out') }}
-                            </x-dropdown-link>
-                        </form>
-                    </x-slot>
-                </x-dropdown>
-            </div>
+                </div>
 
-            <!-- Hamburger -->
-            <div class="-me-2 flex items-center sm:hidden">
-                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
-                    <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                        <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
-            </div>
-        </div>
-    </div>
 
-    <!-- Responsive Navigation Menu -->
-    <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
-        <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
-            </x-responsive-nav-link>
-        </div>
+		<!-- Aide & Contact -->
+		<a href="{{ route('help.index') }}"
+   	          class="inline-flex items-center h-16 text-gray-700 dark:text-slate-100 text-base hover:text-blue-600 dark:hover:text-blue-300">
+    		   Aide & Contact
+		</a>
 
-        <!-- Responsive Settings Options -->
-        <div class="pt-4 pb-1 border-t border-gray-200">
-            <div class="px-4">
-                <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
-                <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
-            </div>
+                <!-- Profil -->
+                <a href="{{ route('profile.edit') }}"
+                   class="inline-flex items-center h-16 text-gray-700 dark:text-slate-100 text-base hover:text-blue-600 dark:hover:text-blue-300">
+                    Profil
+                </a>
 
-            <div class="mt-3 space-y-1">
-                <x-responsive-nav-link :href="route('profile.edit')">
-                    {{ __('Profile') }}
-                </x-responsive-nav-link>
+                <!-- Déconnexion -->
+                <form method="POST"
+                      action="{{ route('logout') }}"
+                      class="flex items-center h-16">
 
-                <!-- Authentication -->
-                <form method="POST" action="{{ route('logout') }}">
                     @csrf
 
-                    <x-responsive-nav-link :href="route('logout')"
-                            onclick="event.preventDefault();
-                                        this.closest('form').submit();">
-                        {{ __('Log Out') }}
-                    </x-responsive-nav-link>
+                    <button
+                        type="submit"
+                        class="inline-flex items-center h-16 text-gray-700 dark:text-slate-100 text-base hover:text-red-500 dark:hover:text-red-400"
+                    >
+                        Déconnexion
+                    </button>
+
                 </form>
+
+                <!-- Mode sombre -->
+                <button
+                    type="button"
+                    onclick="toggleDarkMode()"
+                    class="inline-flex items-center justify-center w-10 h-10 rounded-lg text-gray-700 dark:text-yellow-300 hover:bg-gray-100 dark:hover:bg-slate-700 text-xl"
+                    title="Changer le thème"
+                >
+                    <span id="theme-icon">🌙</span>
+                </button>
+
             </div>
+
         </div>
+
     </div>
+
 </nav>
+
+<script>
+    function toggleDarkMode() {
+
+        const html = document.documentElement;
+        const icon = document.getElementById('theme-icon');
+
+        if (html.classList.contains('dark')) {
+
+            html.classList.remove('dark');
+            localStorage.setItem('theme', 'light');
+
+            if (icon) {
+                icon.textContent = '🌙';
+            }
+
+        } else {
+
+            html.classList.add('dark');
+            localStorage.setItem('theme', 'dark');
+
+            if (icon) {
+                icon.textContent = '☀️';
+            }
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+
+        const icon = document.getElementById('theme-icon');
+
+        if (
+            icon &&
+            document.documentElement.classList.contains('dark')
+        ) {
+            icon.textContent = '☀️';
+        }
+
+    });
+</script>

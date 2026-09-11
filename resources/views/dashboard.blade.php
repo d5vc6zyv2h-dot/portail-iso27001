@@ -1,42 +1,59 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Tableau de bord
-        </h2>
-    </x-slot>
 
-    <div class="p-6">
-        <h1 class="text-2xl font-bold">
-            Bienvenue {{ auth()->user()->name }}
-        </h1>
+    <div class="py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        <p class="mt-2">
-            Rôle :
-            <strong>{{ auth()->user()->getRoleNames()->first() }}</strong>
-        </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
-        <div class="mt-6 space-y-2">
+                <!-- Utilisateurs -->
+                <div class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+                    <p class="text-sm text-gray-600">
+                        Utilisateurs
+                    </p>
 
-            @can('gerer_utilisateurs')
-                <p>👥 Gestion des utilisateurs</p>
-            @endcan
+                    <p class="text-3xl font-bold text-gray-800 mt-2">
+                        {{ $users }}
+                    </p>
+                </div>
 
-            @can('gerer_risques')
-                <p>⚠️ Gestion des risques</p>
-            @endcan
 
-            @can('gerer_traitements')
-                <p>🛠️ Plan de traitement</p>
-            @endcan
+                <!-- Risques -->
+                <div class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+                    <p class="text-sm text-gray-600">
+                        Risques
+                    </p>
 
-            @can('voir_audit')
-                <p>📜 Journal d'audit</p>
-            @endcan
+                    <p class="text-3xl font-bold text-gray-800 mt-2">
+                        {{ $riskCount }}
+                    </p>
+                </div>
 
-            @can('remplir_questionnaire')
-                <p>📝 Questionnaire</p>
-            @endcan
+
+                   <!-- Rapport -->
+<div class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+
+    <p class="text-sm text-gray-600">
+        Rapports
+    </p>
+
+    <p class="text-3xl font-bold text-gray-800 mt-2">
+        {{ ($evaluation && $riskCount > 0) ? 1 : 0 }}
+    </p>
+
+    @if ($evaluation && $riskCount > 0)
+        <a
+            href="{{ route('report.pdf') }}"
+            class="inline-block mt-3 px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-700"
+        >
+            Générer le PDF
+        </a>
+    @endif
+
+</div>
+
+            </div>
 
         </div>
     </div>
+
 </x-app-layout>

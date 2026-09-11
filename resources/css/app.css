@@ -1,3 +1,124 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ================================
+   MODE SOMBRE
+   ================================ */
+
+.dark body {
+    background-color: #1e293b;
+}
+
+.dark .bg-gray-100 {
+    background-color: #1e293b !important;
+}
+
+.dark .bg-white {
+    background-color: #334155 !important;
+}
+
+.dark .bg-gray-50 {
+    background-color: #475569 !important;
+}
+
+.dark .border-gray-200 {
+    border-color: #475569 !important;
+}
+
+.dark .border-gray-100 {
+    border-color: #475569 !important;
+}
+
+.dark .text-gray-800 {
+    color: #f1f5f9 !important;
+}
+
+.dark .text-gray-700 {
+    color: #e2e8f0 !important;
+}
+
+.dark .text-gray-500 {
+    color: #cbd5e1 !important;
+}
+
+.dark .text-gray-400 {
+    color: #94a3b8 !important;
+}
+
+
+/* ========================================
+   MODE SOMBRE - PORTAIL ISO 27001
+   ======================================== */
+
+.dark body {
+    background-color: #1e293b;
+}
+
+/* Fond général */
+.dark .bg-gray-100 {
+    background-color: #1e293b !important;
+}
+
+/* Cartes */
+.dark .bg-white {
+    background-color: #334155 !important;
+}
+
+/* Zones secondaires */
+.dark .bg-gray-50 {
+    background-color: #475569 !important;
+}
+
+/* Bordures */
+.dark .border-gray-200 {
+    border-color: #475569 !important;
+}
+
+.dark .border-gray-100 {
+    border-color: #475569 !important;
+}
+
+/* Titres */
+.dark .text-gray-800 {
+    color: #f8fafc !important;
+}
+
+/* Textes principaux */
+.dark .text-gray-700 {
+    color: #e2e8f0 !important;
+}
+
+/* Textes secondaires */
+.dark .text-gray-500 {
+    color: #cbd5e1 !important;
+}
+
+/* Textes plus visibles */
+.dark p,
+.dark label,
+.dark h2,
+.dark h3,
+.dark h4 {
+    color: #e2e8f0;
+}
+
+/* Champs */
+.dark input,
+.dark textarea,
+.dark select {
+    background-color: #475569 !important;
+    color: #f8fafc !important;
+    border-color: #64748b !important;
+}
+
+/* Texte des placeholders */
+.dark input::placeholder,
+.dark textarea::placeholder {
+    color: #cbd5e1 !important;
+}
+
+/* Menus */
+.dark .shadow-lg {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}

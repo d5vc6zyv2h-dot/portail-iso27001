@@ -1,3 +1,4 @@
+```blade
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -7,24 +8,42 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
-        <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
-        <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans text-gray-900 antialiased">
-        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
-            <div>
-                <a href="/">
-                    <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-                </a>
+
+    <body class="font-sans text-gray-900 antialiased bg-gray-100">
+
+        <div class="min-h-screen flex flex-col items-center justify-center px-4">
+
+            <!-- RBAC -->
+            <div class="mb-6 text-center">
+
+                <div class="flex items-center justify-center gap-3">
+                    <span class="w-10 h-px bg-gray-400"></span>
+
+                    <h1 class="text-4xl font-extrabold tracking-widest text-gray-800">
+                        RBAC
+                    </h1>
+
+                    <span class="w-10 h-px bg-gray-400"></span>
+                </div>
+
+                <p class="text-sm text-gray-500 mt-2 tracking-wide">
+                    Contrôle d'accès basé sur les rôles
+                </p>
+
             </div>
 
-            <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
+            <!-- Formulaire -->
+            <div class="w-full sm:max-w-md px-6 py-6 bg-white shadow-md overflow-hidden sm:rounded-lg">
                 {{ $slot }}
             </div>
+
         </div>
+
     </body>
 </html>
+```

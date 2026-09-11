@@ -1,0 +1,33 @@
+[90m= [39m[34;4mIlluminate\Support\Collection[39;24m {#7644
+    [34mall[39m: [
+      [
+        [34m"[39m[34mrole[39m[34m"[39m => [32m"[39m[32mAdministrateur[39m[32m"[39m,
+        [34m"[39m[34mpermissions[39m[34m"[39m => [
+          [32m"[39m[32mgerer_utilisateurs[39m[32m"[39m,
+          [32m"[39m[32mgerer_risques[39m[32m"[39m,
+          [32m"[39m[32mgerer_traitements[39m[32m"[39m,
+          [32m"[39m[32mvoir_audit[39m[32m"[39m,
+          [32m"[39m[32mremplir_questionnaire[39m[32m"[39m,
+        ],
+      ],
+      [
+        [34m"[39m[34mrole[39m[34m"[39m => [32m"[39m[32mResponsable sécurité[39m[32m"[39m,
+        [34m"[39m[34mpermissions[39m[34m"[39m => [
+          [32m"[39m[32mgerer_risques[39m[32m"[39m,
+          [32m"[39m[32mgerer_traitements[39m[32m"[39m,
+        ],
+      ],
+      [
+        [34m"[39m[34mrole[39m[34m"[39m => [32m"[39m[32mAuditeur[39m[32m"[39m,
+        [34m"[39m[34mpermissions[39m[34m"[39m => [
+          [32m"[39m[32mvoir_audit[39m[32m"[39m,
+        ],
+      ],
+      [
+        [34m"[39m[34mrole[39m[34m"[39m => [32m"[39m[32mUtilisateur[39m[32m"[39m,
+        [34m"[39m[34mpermissions[39m[34m"[39m => [
+          [32m"[39m[32mremplir_questionnaire[39m[32m"[39m,
+        ],
+      ],
+    ],
+  }
