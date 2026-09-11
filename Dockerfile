@@ -39,7 +39,7 @@ RUN composer install --no-dev --optimize-autoloader
 # Dépendances JavaScript + build Vite
 RUN npm install
 RUN npm run build
-
+RUN ls -la public/build && cat public/build/manifest.json
 # Permissions Laravel
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
