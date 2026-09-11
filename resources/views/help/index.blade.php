@@ -366,7 +366,7 @@
 
         <div class="mt-4 text-sm text-gray-600 dark:text-gray-400 space-y-1">
             <p>Téléphone :+243 820800936</p>
-            <p>Email : À compléter</p>
+            <p>Email : christinenyaketi@gmail.com</p>
         </div>
 
     </div>
@@ -391,7 +391,7 @@
 
         <div class="mt-4 text-sm text-gray-600 dark:text-gray-400 space-y-1">
             <p>Téléphone :+243 838168999</p>
-            <p>Email : À compléter</p>
+            <p>Email : Simontutomisa1@gmail.com</p>
         </div>
 
     </div>
@@ -418,7 +418,7 @@
 
         <div class="mt-4 text-sm text-gray-600 dark:text-gray-400 space-y-1">
             <p>Téléphone :+243 898853490</p>
-            <p>Email : À compléter</p>
+            <p>Email : </p>
         </div>
 
 
